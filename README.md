@@ -1,44 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Serverless To-Do App
 
-## Available Scripts
+This project is the final project of [Udacity's Cloud Developer Nanodegree Program](https://www.udacity.com/course/cloud-developer-nanodegree--nd9990).
 
-In the project directory, you can run:
+- The backend uses [Serverless Framework](https://www.serverless.com/), AWS [Lambda](https://aws.amazon.com/lambda/) and AWS [API Gateway](https://aws.amazon.com/api-gateway/), to process HTTP requests. The database used is AWS [DynamoDB](https://aws.amazon.com/dynamodb/). Images uploaded by users are stored in AWS [S3](https://aws.amazon.com/s3/). The deployment of the application and the infrastructure is fully automated by a [CloudFormation](https://aws.amazon.com/cloudformation/) script.
 
-### `npm start`
+- The fronend uses [ReactJS](https://reactjs.org/), [SemanticUI](https://react.semantic-ui.com/), [Axios](https://www.npmjs.com/package/axios), [React Router](https://reactrouter.com/en/main) and [Styled Components](https://styled-components.com/).
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- For authentication and authorization, the application uses [Auth0](https://auth0.com/) services.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Both the frontend and backend use [TypeScript](https://www.typescriptlang.org/), for end-to-end type safety.
