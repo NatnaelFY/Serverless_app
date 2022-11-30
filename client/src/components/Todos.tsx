@@ -40,27 +40,21 @@ export class Todos extends React.PureComponent<TodosProps, TodosState> {
     this.setState({ newTodoName: event.target.value })
   }
 
-  onEditButtonClick = (todoId: string, todo: Todo) => {
-    // this.props.history.push(`/todos/${todoId}/edit`)
-    this.props.history.push({
-      pathname: `/todos/${todoId}/edit`,
-      state: { todo }
-    })
+  onEditButtonClick = (todoId: string) => {
+    this.props.history.push(`/todos/${todoId}/edit`)
   }
 
   onTodoCreate = async (event: React.ChangeEvent<HTMLButtonElement>) => {
     try {
-      if (this.state.newTodoName.length > 0) {
-        const dueDate = this.calculateDueDate()
-        const newTodo = await createTodo(this.props.auth.getIdToken(), {
-          name: this.state.newTodoName,
-          dueDate
-        })
-        this.setState({
-          todos: [...this.state.todos, newTodo],
-          newTodoName: ''
-        })
-      }
+      const dueDate = this.calculateDueDate()
+      const newTodo = await createTodo(this.props.auth.getIdToken(), {
+        name: this.state.newTodoName,
+        dueDate
+      })
+      this.setState({
+        todos: [...this.state.todos, newTodo],
+        newTodoName: ''
+      })
     } catch {
       alert('Todo creation failed')
     }
@@ -70,7 +64,7 @@ export class Todos extends React.PureComponent<TodosProps, TodosState> {
     try {
       await deleteTodo(this.props.auth.getIdToken(), todoId)
       this.setState({
-        todos: this.state.todos.filter((todo) => todo.todoId != todoId)
+        todos: this.state.todos.filter(todo => todo.todoId != todoId)
       })
     } catch {
       alert('Todo deletion failed')
@@ -81,7 +75,8 @@ export class Todos extends React.PureComponent<TodosProps, TodosState> {
     try {
       const todo = this.state.todos[pos]
       await patchTodo(this.props.auth.getIdToken(), todo.todoId, {
-        ...todo,
+        name: todo.name,
+        dueDate: todo.dueDate,
         done: !todo.done
       })
       this.setState({
@@ -183,7 +178,7 @@ export class Todos extends React.PureComponent<TodosProps, TodosState> {
                 <Button
                   icon
                   color="blue"
-                  onClick={() => this.onEditButtonClick(todo.todoId, todo)}
+                  onClick={() => this.onEditButtonClick(todo.todoId)}
                 >
                   <Icon name="pencil" />
                 </Button>
